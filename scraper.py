@@ -23,7 +23,7 @@ def fetch_image_urls(query: str, max_links_to_fetch: int, wd: webdriver, sleep_b
         scroll_to_end(wd)
 
         # get all image thumbnail results
-        thumbnail_results = wd.find_element(By.CSS_SELECTOR,"img.Q4LuWd")
+        thumbnail_results = wd.find_elements_by_css_selector("img.Q4LuWd")
         number_results = len(thumbnail_results)
 
         print(f"Found: {number_results} search results. Extracting links from {results_start}:{number_results}")
@@ -51,7 +51,7 @@ def fetch_image_urls(query: str, max_links_to_fetch: int, wd: webdriver, sleep_b
             print("Found:", len(image_urls), "image links, looking for more ...")
             time.sleep(30)
             return
-            load_more_button = wd.find_element_by_css_selector(".mye4qd")
+            load_more_button = wd.find_elements_by_css_selector(".mye4qd")
             if load_more_button:
                 wd.execute_script("document.querySelector('.mye4qd').click();")
 
